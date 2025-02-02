@@ -1,5 +1,5 @@
 const home = (req, res) => {
-    res.send('hello home page')
+    res.render('index.ejs' , {title: 'My App'})
 }
 
 module.exports = {
