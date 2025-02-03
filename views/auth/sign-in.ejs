@@ -1,16 +1,14 @@
 <%- include('../partials/head')%>
-<h1>Create a new account!</h1>
+<h1>Sign into your account</h1>
 
 <div class="container">
-<form action="/auth/sign-up" method="POST">
+<form action="/auth/sign-in" method="POST">
 
     <label for="">Username: </label>
     <input type="text" name="username">
     <label for="">Password: </label>
     <input type="password" name="password">
-    <label for="">Confirm Password: </label>
-    <input type="password" name="confirmPassword">
-    <button type="submit" class=""btn-btn-primary>Sign up</button>
+    <button type="submit" class=""btn-btn-primary>Sign in</button>
     <p><%= msg %></p>
 </form>
 </div>
