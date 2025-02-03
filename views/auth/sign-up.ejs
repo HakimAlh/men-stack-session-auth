@@ -1,0 +1,15 @@
+<%- include('../partials/head')%>
+<h1>Create a new account!</h1>
+<form action="/auth/sign-up" method="POST">
+
+    <label for="">Username: </label>
+    <input type="text" name="username">
+    <label for="">Password: </label>
+    <input type="password" name="password">
+    <label for="">Confirm Password: </label>
+    <input type="password" name="confirmPassword">
+    <button type="submit" class=""btn-btn-primary>Sign up</button>
+    <p><%= msg %></p>
+</form>
+
+<%- include('../partials/footer')%>
