@@ -1,8 +1,5 @@
 const bcrypt = require('bcrypt')
-
 const User = require('../models/user')
-
-
 
 const signUp = (req, res) => {
     res.render('auth/sign-up.ejs', 
@@ -29,9 +26,7 @@ const addUser = async (req, res) => {
 
     const user = await User.create(req.body)
     
-    req.session.user = {
-        username: user.username,
-    }
+    req.session.user = user
     
     req.session.save(() => {
         res.redirect('/')
@@ -39,20 +34,15 @@ const addUser = async (req, res) => {
     
 }
 
-
-
 const signInForm = (req, res) => {
-    res.render('auth/sign-in.ejs', 
-        {title: 'Sign in' ,
+    res.render('auth/sign-in.ejs', {
+        title: 'Sign in',
         msg: ''
-        }
-    )
+    })
 }
 
 const signIn = async (req, res) => {
-    console.log('req.body: ', req.body)
     const userInDatabase = await User.findOne({ username: req.body.username })
-    console.log('userInDatabase: ', userInDatabase)
     if (!userInDatabase) {
         return res.render('auth/sign-in.ejs', {
             title: 'Sign in',
@@ -71,15 +61,12 @@ const signIn = async (req, res) => {
         })
     }
 
-    req.session.user = {
-        username: userInDatabase.username,
-    }
+    req.session.user = userInDatabase
+
     req.session.save(() => {
         res.redirect('/')
     })
 
-
-    
 
 }
 
